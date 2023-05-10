@@ -120,6 +120,26 @@ public class ViolationContext : IdentityDbContext<User, Role, int>
             new Violation { Id = 1, Type = "Parked in wrong place" },
             new Violation { Id = 2, Type = "Unfastened seat belt" });
 
+        builder.Entity<Photo>().HasData(new Photo { Id = 1, FileName = "dummy", FilePath = "dummy", Hash = new[] {Byte.MinValue} });
+        builder.Entity<Video>().HasData(new Video { Id = 1, FileName = "dummy", FilePath = "dummy", Hash = new[] { Byte.MinValue } });
+
+        builder.Entity<Application>().HasData(
+            new Application{
+                Id = 1,
+                UserId = 1,
+                ViolationId = 1, 
+                StatusId = 1, 
+                Geolocation = "dummy", 
+                VehicleTypeId = 1,
+                VehicleColorId = 1, 
+                VehicleMarkId = 1,
+                PublicationTime = DateTime.Today,
+                ViolationTime = DateTime.Today,
+                VehicleNumber = "dummy",
+                PhotoId = 1,
+                VideoId = 1
+            });
+
         builder.Entity<UserProfile>().HasOne(x => x.AppUser).WithOne(x => x.UserProfile).HasForeignKey<UserProfile>(x => x.Id);
     }
 }

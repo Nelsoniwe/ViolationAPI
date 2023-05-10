@@ -42,7 +42,7 @@ public class Application : BaseEntity
     public DateTime PublicationTime { get; set; }
 
     [Required]
-    public TimeSpan ViolationTime { get; set; }
+    public DateTime ViolationTime { get; set; }
 
     [ForeignKey("Photo")]
     public int? PhotoId { get; set; }

@@ -7,4 +7,4 @@ namespace DAL.Interfaces;
 /// <summary>
 /// Repository interface to work with Applications
 /// </summary>
-public interface IApplicationRepository : IRepository<Application>, IRepositoryExpanded<Application> { }
+public interface IApplicationRepository : IRepository<Application> { }
