@@ -1,6 +1,8 @@
-﻿namespace BLL.Services;
+﻿using BLL.Interfaces;
 
-public class UserService
+namespace BLL.Services;
+
+public class UserService : IUserService
 {
 
 }

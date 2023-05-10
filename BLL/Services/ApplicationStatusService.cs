@@ -1,6 +1,8 @@
-﻿namespace BLL.Services;
+﻿using BLL.Interfaces;
 
-public class ApplicationStatusService
+namespace BLL.Services;
+
+public class ApplicationStatusService : IApplicationStatusService
 {
 
 }

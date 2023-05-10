@@ -1,6 +1,8 @@
-﻿namespace BLL.Services;
+﻿using BLL.Interfaces;
 
-public class PhotoService
+namespace BLL.Services;
+
+public class PhotoService : PhotoService
 {
 
 }

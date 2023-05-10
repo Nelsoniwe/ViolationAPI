@@ -1,6 +1,8 @@
-﻿namespace BLL.Services;
+﻿using BLL.Interfaces;
 
-public class VehicleMarkService
+namespace BLL.Services;
+
+public class VehicleMarkService : IVehicleMarkService
 {
 
 }

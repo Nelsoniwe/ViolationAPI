@@ -1,6 +1,8 @@
-﻿namespace BLL.Services;
+﻿using BLL.Interfaces;
 
-public class ApplicationService
+namespace BLL.Services;
+
+public class ApplicationService : IApplicationService
 {
 
 }

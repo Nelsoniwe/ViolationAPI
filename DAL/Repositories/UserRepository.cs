@@ -84,7 +84,6 @@ namespace DAL.Repositories
         public async Task<IdentityResult> UserAddAsync(User entity, string password)
         {
             return await _userManager.CreateAsync(entity, password);
-            
         }
 
         public async Task<IdentityResult> UserChangePasswordAsync(User user, string currentPassword, string newPassword)

@@ -1,6 +1,8 @@
-﻿namespace BLL.Services;
+﻿using BLL.Interfaces;
 
-public class ViolationService
+namespace BLL.Services;
+
+public class ViolationService : IViolationService
 {
 
 }

@@ -1,6 +1,8 @@
-﻿namespace BLL.Services;
+﻿using BLL.Interfaces;
 
-public class VideoService
+namespace BLL.Services;
+
+public class VideoService : IVideoService
 {
 
 }
