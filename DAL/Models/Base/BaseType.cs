@@ -7,4 +7,10 @@ public class BaseType : BaseEntity
     [Required]
     [MaxLength(50)]
     public string Type { get; set; }
+    public ICollection<Application> Applications { get; set; }
+
+    public BaseType()
+    {
+        Applications ??= new HashSet<Application>();
+    }
 }

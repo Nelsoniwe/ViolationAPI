@@ -8,5 +8,4 @@ public interface IUserProfileService
     Task<UserProfileDTO> GetUserProfileByIdWithDetails(int id);
     Task<UserProfileDTO> GetByUserName(string name);
     Task<UserProfileDTO> GetUserProfileById(int id);
-    Task UpdateUserProfileAsync(UserProfileDTO item);
 }

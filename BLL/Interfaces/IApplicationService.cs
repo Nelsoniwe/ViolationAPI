@@ -11,6 +11,6 @@ public interface IApplicationService
     Task UpdateApplicationAsync(ApplicationDTO item);
 
     Task<IEnumerable<ApplicationDTO>> GetAllUserApplications(int userId);
-    Task<IEnumerable<ApplicationDTO>> GetAllUnresolvedApplications();
+    Task<IEnumerable<ApplicationDTO>> GetAllApplicationsByStatusId();
     Task<IEnumerable<ApplicationDTO>> GetAllVehicleApplications(string vehicleNumber);
 }

@@ -8,5 +8,4 @@ public interface IPhotoService
     Task<IEnumerable<PhotoDTO>> GetAllPhotos();
     Task<PhotoDTO> GetPhotoById(int id);
     Task DeletePhotoById(int id);
-    Task UpdatePhotoAsync(PhotoDTO item);
 }

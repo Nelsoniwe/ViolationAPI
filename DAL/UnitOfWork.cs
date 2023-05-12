@@ -1,6 +1,7 @@
 ﻿using DAL.Interfaces;
 using DAL.Interfaces.BaseInterfaces;
 using DAL.Models;
+using DAL.Repositories;
 
 namespace DAL;
 
@@ -11,7 +12,7 @@ public class UnitOfWork : IUnitOfWork
     public UnitOfWork(ViolationContext db, IUserProfileRepository userProfileRepository, IUserRepository userRepository,
         IRoleRepository roleRepository, IApplicationRepository applicationRepository, IRepository<VehicleType> vehicleTypeRepository,
         IRepository<VehicleMark> vehicleMarkRepository, IRepository<VehicleColor> vehicleColorRepository, IRepository<Violation> violationRepository,
-        IRepository<Photo> photoRepository, IRepository<Video> videoRepository)
+        IRepository<Photo> photoRepository, IRepository<Video> videoRepository, IRepository<ApplicationStatus> applicationStatusRepository)
     {
         _db = db;
         UserProfileRepository = userProfileRepository;
@@ -24,12 +25,14 @@ public class UnitOfWork : IUnitOfWork
         ViolationRepository = violationRepository;
         PhotoRepository = photoRepository;
         VideoRepository = videoRepository;
+        ApplicationStatusRepository = applicationStatusRepository;
     }
 
     public IUserProfileRepository UserProfileRepository { get; }
     public IUserRepository UserRepository { get; }
     public IRoleRepository RoleRepository { get; }
     public IApplicationRepository ApplicationRepository { get; }
+    public IRepository<ApplicationStatus> ApplicationStatusRepository { get; }
     public IRepository<VehicleType> VehicleTypeRepository { get; }
     public IRepository<VehicleMark> VehicleMarkRepository { get; }
     public IRepository<VehicleColor> VehicleColorRepository { get; }

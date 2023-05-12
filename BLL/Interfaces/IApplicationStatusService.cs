@@ -9,5 +9,4 @@ public interface IApplicationStatusService
     Task<ApplicationStatusDTO> GetApplicationStatusById(int id);
     Task DeleteApplicationStatusById(int id);
     Task<ApplicationStatusDTO> GetApplicationStatusByName(string name);
-    Task UpdateApplicationStatusAsync(ApplicationStatusDTO item);
 }

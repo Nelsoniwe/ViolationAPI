@@ -9,5 +9,4 @@ public interface IVehicleTypeService
     Task<VehicleTypeDTO> GetVehicleTypeById(int id);
     Task DeleteVehicleTypeById(int id);
     Task<VehicleTypeDTO> GetVehicleTypeByName(string name);
-    Task UpdateVehicleTypeAsync(VehicleTypeDTO item);
 }

@@ -8,5 +8,4 @@ public interface IVideoService
     Task<IEnumerable<VideoDTO>> GetAllVideos();
     Task<VideoDTO> GetVideoById(int id);
     Task DeleteVideoById(int id);
-    Task UpdateVideoAsync(VideoDTO item);
 }

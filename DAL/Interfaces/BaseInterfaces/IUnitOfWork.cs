@@ -28,6 +28,11 @@ public interface IUnitOfWork
     IApplicationRepository ApplicationRepository { get; }
 
     /// <summary>
+    /// Application Status repository
+    /// </summary>
+    IRepository<ApplicationStatus> ApplicationStatusRepository { get; }
+
+    /// <summary>
     /// VehicleType repository
     /// </summary>
     IRepository<VehicleType> VehicleTypeRepository { get; }

@@ -9,5 +9,4 @@ public interface IVehicleColorService
     Task<VehicleColorDTO> GetVehicleColorById(int id);
     Task DeleteVehicleColorById(int id);
     Task<VehicleColorDTO> GetVehicleColorByName(string name);
-    Task UpdateVehicleColorAsync(VehicleColorDTO item);
 }

@@ -17,5 +17,12 @@ namespace DAL.Models
         public string LastName { get; set; }
 
         public virtual User AppUser { get; set; }
+
+        public ICollection<Application> Applications { get; set; }
+
+        public UserProfile()
+        {
+            Applications ??= new HashSet<Application>();
+        }
     }
 }

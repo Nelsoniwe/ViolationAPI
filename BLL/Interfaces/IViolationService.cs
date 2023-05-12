@@ -9,5 +9,4 @@ public interface IViolationService
     Task<ViolationDTO> GetViolationById(int id);
     Task DeletViolationById(int id);
     Task<ViolationDTO> GetViolationByName(string name);
-    Task UpdateViolationAsync(ViolationDTO item);
 }

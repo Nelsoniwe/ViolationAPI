@@ -9,5 +9,4 @@ public interface IVehicleMarkService
     Task<VehicleMarkDTO> GetVehicleMarkById(int id);
     Task DeleteVehicleMarkById(int id);
     Task<VehicleMarkDTO> GetVehicleMarkByName(string name);
-    Task UpdateVehicleMarkAsync(VehicleMarkDTO item);
 }
