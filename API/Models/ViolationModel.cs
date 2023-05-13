@@ -1,10 +1,10 @@
-﻿namespace BLL.Models;
+﻿namespace API.Models;
 
-public class ApplicationStatusDTO
+public class ViolationModel
 {
     public int Id { get; set; }
 
-    public string Status { get; set; }
+    public string Type { get; set; }
 
     public virtual ICollection<int> ApplicationIds { get; set; }
 }

@@ -21,10 +21,23 @@ public class AutoMapperBLL : Profile
         CreateMap<Application, ApplicationDTO>().ReverseMap();
         CreateMap<ApplicationStatus, ApplicationStatusDTO>().ReverseMap();
         CreateMap<Photo, PhotoDTO>().ReverseMap();
-        CreateMap<VehicleColor, VehicleColorDTO>().ReverseMap();
-        CreateMap<VehicleMark, VehicleMarkDTO>().ReverseMap();
-        CreateMap<VehicleType, VehicleTypeDTO>().ReverseMap();
         CreateMap<Video, VideoDTO>().ReverseMap();
-        CreateMap<Violation, ViolationDTO>().ReverseMap();
+
+
+        CreateMap<VehicleColor, VehicleColorDTO>()
+            .ForMember(p=>p.ApplicationIds, c => c.MapFrom(src => src.Applications))
+            .ReverseMap();
+
+        CreateMap<VehicleMark, VehicleMarkDTO>()
+            .ForMember(p => p.ApplicationIds, c => c.MapFrom(src => src.Applications))
+            .ReverseMap();
+
+        CreateMap<VehicleType, VehicleTypeDTO>()
+            .ForMember(p => p.ApplicationIds, c => c.MapFrom(src => src.Applications))
+            .ReverseMap();
+        
+        CreateMap<Violation, ViolationDTO>()
+            .ForMember(p => p.ApplicationIds, c => c.MapFrom(src => src.Applications))
+            .ReverseMap();
     }
 }

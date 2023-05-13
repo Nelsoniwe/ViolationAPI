@@ -6,6 +6,9 @@ var builder = WebApplication.CreateBuilder(args);
 using (var context = new ViolationContext())
 {
     //context.Database.EnsureDeleted();
+
+
+
     context.Database.EnsureCreated();
     context.SaveChanges();
 }
