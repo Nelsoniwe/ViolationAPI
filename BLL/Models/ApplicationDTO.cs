@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using DAL.Models;
 
 namespace BLL.Models;
 
@@ -15,7 +16,7 @@ public class ApplicationDTO
     public int StatusId { get; set; }
     public string Geolocation { get; set; }
     public DateTime PublicationTime { get; set; }
-    public TimeSpan ViolationTime { get; set; }
+    public DateTime ViolationTime { get; set; }
     public int? PhotoId { get; set; }
     public int? VideoId { get; set; }
 }

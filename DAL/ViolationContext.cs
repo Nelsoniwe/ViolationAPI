@@ -17,9 +17,9 @@ public class ViolationContext : IdentityDbContext<User, Role, int>
 
     }
 
-    public ViolationContext(DbContextOptions<ViolationContext> options) : base(options)
-    {
-    }
+    //public ViolationContext(DbContextOptions<ViolationContext> options) : base(options)
+    //{
+    //}
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
