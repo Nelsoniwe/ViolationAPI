@@ -25,19 +25,19 @@ public class AutoMapperBLL : Profile
 
 
         CreateMap<VehicleColor, VehicleColorDTO>()
-            .ForMember(p=>p.ApplicationIds, c => c.MapFrom(src => src.Applications))
+            .ForMember(p=>p.ApplicationIds, c => c.MapFrom(src => src.Applications.Select(item => item.Id)))
             .ReverseMap();
 
         CreateMap<VehicleMark, VehicleMarkDTO>()
-            .ForMember(p => p.ApplicationIds, c => c.MapFrom(src => src.Applications))
+            .ForMember(p => p.ApplicationIds, c => c.MapFrom(src => src.Applications.Select(item => item.Id)))
             .ReverseMap();
 
         CreateMap<VehicleType, VehicleTypeDTO>()
-            .ForMember(p => p.ApplicationIds, c => c.MapFrom(src => src.Applications))
+            .ForMember(p => p.ApplicationIds, c => c.MapFrom(src => src.Applications.Select(item => item.Id)))
             .ReverseMap();
         
         CreateMap<Violation, ViolationDTO>()
-            .ForMember(p => p.ApplicationIds, c => c.MapFrom(src => src.Applications))
+            .ForMember(p => p.ApplicationIds, c => c.MapFrom(src => src.Applications.Select(item => item.Id)))
             .ReverseMap();
     }
 }

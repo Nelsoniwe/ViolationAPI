@@ -77,14 +77,8 @@ public class VehicleColorController : ControllerBase
     public async Task<ActionResult> DeleteColor(int id)
     {
         var color = await _vehicleColorService.GetVehicleColorById(id);
-        var roles = await _userService.UserGetRoles(Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier).Value));
 
-        if (roles.Any(x => x == "Admin"))
-        {
-            await _vehicleColorService.DeleteVehicleColorById(id);
-            return Ok();
-        }
-
-        return BadRequest("Access denied");
+        await _vehicleColorService.DeleteVehicleColorById(id);
+        return Ok();
     }
 }

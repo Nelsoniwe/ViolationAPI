@@ -78,14 +78,8 @@ public class VehicleMarkController : ControllerBase
     public async Task<ActionResult> DeleteMark(int id)
     {
         var mark = await _vehicleMarkService.GetVehicleMarkById(id);
-        var roles = await _userService.UserGetRoles(Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier).Value));
 
-        if (roles.Any(x => x == "Admin"))
-        {
-            await _vehicleMarkService.DeleteVehicleMarkById(id);
-            return Ok();
-        }
-
-        return BadRequest("Access denied");
+        await _vehicleMarkService.DeleteVehicleMarkById(id);
+        return Ok();
     }
 }

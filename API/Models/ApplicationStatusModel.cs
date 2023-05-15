@@ -6,5 +6,5 @@ public class ApplicationStatusModel
 
     public string Type { get; set; }
 
-    public virtual ICollection<int> ApplicationIds { get; set; }
+    public ICollection<int> ApplicationIds { get; set; }
 }

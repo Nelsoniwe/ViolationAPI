@@ -27,7 +27,7 @@ public class ApplicationStatusController : ControllerBase
     }
 
     /// <summary>
-    /// Get all marks
+    /// Get all application statuses
     /// </summary>
     [HttpGet]
     [AllowAnonymous]
@@ -37,7 +37,7 @@ public class ApplicationStatusController : ControllerBase
     }
 
     /// <summary>
-    /// Get mark by name
+    /// Get application status by name
     /// </summary>
     [HttpGet]
     [AllowAnonymous]
@@ -48,7 +48,7 @@ public class ApplicationStatusController : ControllerBase
     }
 
     /// <summary>
-    /// Get mark by id
+    /// Get application status by id
     /// </summary>
     [HttpGet]
     [AllowAnonymous]
@@ -59,7 +59,7 @@ public class ApplicationStatusController : ControllerBase
     }
 
     /// <summary>
-    /// Create mark
+    /// Create application status
     /// </summary>
     [HttpPost]
     [Authorize(Roles = "Admin")]
@@ -70,7 +70,7 @@ public class ApplicationStatusController : ControllerBase
     }
 
     /// <summary>
-    /// Delete mark
+    /// Delete application status
     /// </summary>
     [HttpDelete]
     [Authorize(Roles = "Admin")]

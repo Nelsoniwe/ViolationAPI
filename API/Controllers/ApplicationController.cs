@@ -107,4 +107,33 @@ public class ApplicationController : ControllerBase
         await _applicationService.DeleteApplicationById(id);
         return Ok();
     }
+
+    /// <summary>
+    /// Update application by authorized user
+    /// </summary>
+    /// <param name="application">Application info that should be updated</param>
+    /// <returns></returns>
+    [HttpPut]
+    [Authorize(Roles = "User")]
+    public async Task<ActionResult> UpdateApplication([FromBody] ApplicationModel application)
+    {
+        var applicationToUpdate = await _applicationService.GetApplicationById(application.Id);
+        var roles = await _userService.UserGetRoles(Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier).Value));
+
+        if (roles.Any(x => x == "Admin"))
+        {
+            await _applicationService.DeleteApplicationById(application.Id);
+            return Ok();
+        }
+
+        var userApplications = await _applicationService.GetAllUserApplications(Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier).Value));
+
+        if (userApplications.Select(x => x.Id).Contains(application.Id))
+        {
+            return BadRequest("It is not your application");
+        }
+
+        await _applicationService.UpdateApplicationAsync(_mapper.Map<ApplicationDTO>(application));
+        return Ok();
+    }
 }

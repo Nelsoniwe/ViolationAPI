@@ -78,14 +78,8 @@ public class VehicleTypeController : ControllerBase
     public async Task<ActionResult> DeleteType(int id)
     {
         var type = await _vehicleTypeService.GetVehicleTypeById(id);
-        var roles = await _userService.UserGetRoles(Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier).Value));
 
-        if (roles.Any(x => x == "Admin"))
-        {
-            await _vehicleTypeService.DeleteVehicleTypeById(id);
-            return Ok();
-        }
-
-        return BadRequest("Access denied");
+        await _vehicleTypeService.DeleteVehicleTypeById(id);
+        return Ok();
     }
 }

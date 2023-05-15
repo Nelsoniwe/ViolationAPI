@@ -79,12 +79,8 @@ public class ViolationController : ControllerBase
         var violation = await _violationService.GetViolationById(id);
         var roles = await _userService.UserGetRoles(Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier).Value));
 
-        if (roles.Any(x => x == "Admin"))
-        {
-            await _violationService.DeletViolationById(id);
-            return Ok();
-        }
+        await _violationService.DeletViolationById(id);
+        return Ok();
 
-        return BadRequest("Access denied");
     }
 }

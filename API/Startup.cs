@@ -71,6 +71,7 @@ public class Startup
             })
             .AddEntityFrameworkStores<ViolationContext>();
 
+
         services.AddAuthentication(options =>
         {
             options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -119,6 +120,7 @@ public class Startup
         services.AddScoped<IVehicleTypeService, VehicleTypeService>();
         services.AddScoped<IVideoService, VideoService>();
         services.AddScoped<IViolationService, ViolationService>();
+        services.AddScoped<IAuthService, AuthService>();
 
         services.AddAutoMapper(typeof(AutoMapperBLL));
         services.AddAutoMapper(typeof(AutoMapperPL));
@@ -139,9 +141,7 @@ public class Startup
                 Description = "Enter JWT token into field"
             });
 
-            var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.XML";
-            var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-            c.IncludeXmlComments(xmlPath);
+
 
             c.AddSecurityRequirement(new OpenApiSecurityRequirement
             {
@@ -157,6 +157,10 @@ public class Startup
                     new string[] { }
                 }
             });
+
+            var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.XML";
+            var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+            c.IncludeXmlComments(xmlPath);
         });
 
 

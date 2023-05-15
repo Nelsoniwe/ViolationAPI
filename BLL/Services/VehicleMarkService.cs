@@ -23,7 +23,7 @@ public class VehicleMarkService : IVehicleMarkService
     {
         if (string.IsNullOrEmpty(tag.Type))
             throw new ViolationException("VehicleMark were empty");
-        if (await(await _db.VehicleMarkRepository.GetAllAsync()).FirstOrDefaultAsync(x => x.Type == tag.Type) != null)
+        if ((await _db.VehicleMarkRepository.GetAllAsync()).ToList().FirstOrDefault(x => x.Type == tag.Type) != null)
             throw new ViolationException("VehicleMark already exist");
 
         await _db.VehicleMarkRepository.AddAsync(_mapper.Map<VehicleMark>(tag));

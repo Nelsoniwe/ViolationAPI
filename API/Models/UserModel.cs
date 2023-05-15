@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using BLL.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace API.Models;
 
