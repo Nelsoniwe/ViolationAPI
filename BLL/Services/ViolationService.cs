@@ -18,16 +18,15 @@ public class ViolationService : IViolationService
         _db = uow;
         _mapper = mapper;
     }
-    public async Task<int> AddViolation(ViolationDTO tag)
+    public async Task AddViolation(ViolationDTO tag)
     {
         if (string.IsNullOrEmpty(tag.Type))
             throw new ViolationException("ViolationType were empty");
-        if (await(await _db.ViolationRepository.GetAllAsync()).FirstOrDefaultAsync(x => x.Type == tag.Type) != null)
+        if ((await _db.ViolationRepository.GetAllAsync()).ToList().FirstOrDefault(x => x.Type == tag.Type) != null)
             throw new ViolationException("ViolationType already exist");
 
         await _db.ViolationRepository.AddAsync(_mapper.Map<Violation>(tag));
         await _db.SaveAsync();
-        return tag.Id;
     }
 
     public async Task<IEnumerable<ViolationDTO>> GetAllViolations()
@@ -53,7 +52,7 @@ public class ViolationService : IViolationService
 
     public async Task<ViolationDTO> GetViolationByName(string name)
     {
-        var tag = await(await _db.ViolationRepository.GetAllAsync()).FirstOrDefaultAsync(x => x.Type == name);
+        var tag = (await _db.ViolationRepository.GetAllAsync()).ToList().FirstOrDefault(x => x.Type == name);
         if (tag == null)
             throw new NotFoundException("Violation not found");
         return _mapper.Map<ViolationDTO>(tag);

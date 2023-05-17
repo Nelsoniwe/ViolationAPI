@@ -65,8 +65,8 @@ public class ViolationController : ControllerBase
     [Authorize(Roles = "Admin")]
     public async Task<ActionResult> CreateViolation([FromBody] ViolationModel color)
     {
-        var newTypeId = await _violationService.AddViolation(_mapper.Map<ViolationDTO>(color));
-        return Ok(await _violationService.GetViolationById(newTypeId));
+        await _violationService.AddViolation(_mapper.Map<ViolationDTO>(color));
+        return Ok();
     }
 
     /// <summary>

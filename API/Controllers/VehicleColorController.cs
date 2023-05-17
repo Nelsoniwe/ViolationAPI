@@ -65,8 +65,8 @@ public class VehicleColorController : ControllerBase
     [Authorize(Roles = "Admin")]
     public async Task<ActionResult> CreateColor([FromBody] VehicleColorModel color)
     {
-        var newColorId = await _vehicleColorService.AddVehicleColor(_mapper.Map<VehicleColorDTO>(color));
-        return Ok(await _vehicleColorService.GetVehicleColorById(newColorId));
+        await _vehicleColorService.AddVehicleColor(_mapper.Map<VehicleColorDTO>(color));
+        return Ok();
     }
 
     /// <summary>

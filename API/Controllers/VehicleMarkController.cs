@@ -65,9 +65,9 @@ public class VehicleMarkController : ControllerBase
     [HttpPost]
     [Authorize(Roles = "Admin")]
     public async Task<ActionResult> CreateMark([FromBody] VehicleMarkModel color)
-    {
-        var newMarkId = await _vehicleMarkService.AddVehicleMark(_mapper.Map<VehicleMarkDTO>(color));
-        return Ok(await _vehicleMarkService.GetVehicleMarkById(newMarkId));
+    {  
+        await _vehicleMarkService.AddVehicleMark(_mapper.Map<VehicleMarkDTO>(color));
+        return Ok(await _vehicleMarkService.GetVehicleMarkByName(color.Type));
     }
 
     /// <summary>

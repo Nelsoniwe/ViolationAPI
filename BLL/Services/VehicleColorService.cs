@@ -19,16 +19,15 @@ public class VehicleColorService : IVehicleColorService
         _mapper = mapper;
     }
 
-    public async Task<int> AddVehicleColor(VehicleColorDTO tag)
+    public async Task AddVehicleColor(VehicleColorDTO tag)
     {
         if (string.IsNullOrEmpty(tag.Type))
             throw new ViolationException("Color were empty");
-        if (await(await _db.VehicleColorRepository.GetAllAsync()).FirstOrDefaultAsync(x => x.Type == tag.Type) != null)
+        if ((await _db.VehicleColorRepository.GetAllAsync()).ToList().FirstOrDefault(x => x.Type == tag.Type) != null)
             throw new ViolationException("Color already exist");
 
         await _db.VehicleColorRepository.AddAsync(_mapper.Map<VehicleColor>(tag));
         await _db.SaveAsync();
-        return tag.Id;
     }
 
     public async Task<IEnumerable<VehicleColorDTO>> GetAllVehicleColors()
@@ -54,7 +53,7 @@ public class VehicleColorService : IVehicleColorService
 
     public async Task<VehicleColorDTO> GetVehicleColorByName(string name)
     {
-        var tag = await(await _db.VehicleColorRepository.GetAllAsync()).FirstOrDefaultAsync(x => x.Type == name);
+        var tag = (await _db.VehicleColorRepository.GetAllAsync()).ToList().FirstOrDefault(x => x.Type == name);
         if (tag == null)
             throw new NotFoundException("Color not found");
         return _mapper.Map<VehicleColorDTO>(tag);

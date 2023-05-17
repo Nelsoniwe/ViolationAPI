@@ -19,16 +19,15 @@ public class ApplicationStatusService : IApplicationStatusService
         _mapper = mapper;
     }
 
-    public async Task<int> AddApplicationStatus(ApplicationStatusDTO tag)
+    public async Task AddApplicationStatus(ApplicationStatusDTO tag)
     {
         if (string.IsNullOrEmpty(tag.Status))
             throw new ViolationException("ApplicationStatus were empty");
-        if (await(await _db.ApplicationStatusRepository.GetAllAsync()).FirstOrDefaultAsync(x => x.Status == tag.Status) != null)
+        if ((await _db.ApplicationStatusRepository.GetAllAsync()).ToList().FirstOrDefault(x => x.Status == tag.Status) != null)
             throw new ViolationException("ApplicationStatus already exist");
 
         await _db.ApplicationStatusRepository.AddAsync(_mapper.Map<ApplicationStatus>(tag));
         await _db.SaveAsync();
-        return tag.Id;
     }
 
     public async Task<IEnumerable<ApplicationStatusDTO>> GetAllApplicationStatuses()
@@ -54,7 +53,7 @@ public class ApplicationStatusService : IApplicationStatusService
 
     public async Task<ApplicationStatusDTO> GetApplicationStatusByName(string name)
     {
-        var tag = await(await _db.ApplicationStatusRepository.GetAllAsync()).FirstOrDefaultAsync(x => x.Status == name);
+        var tag = (await _db.ApplicationStatusRepository.GetAllAsync()).ToList().FirstOrDefault(x => x.Status == name);
         if (tag == null)
             throw new NotFoundException("ApplicationStatus not found");
         return _mapper.Map<ApplicationStatusDTO>(tag);

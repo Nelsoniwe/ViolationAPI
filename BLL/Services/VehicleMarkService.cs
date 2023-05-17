@@ -19,16 +19,15 @@ public class VehicleMarkService : IVehicleMarkService
         _mapper = mapper;
     }
 
-    public async Task<int> AddVehicleMark(VehicleMarkDTO tag)
+    public async Task AddVehicleMark(VehicleMarkDTO tag)
     {
         if (string.IsNullOrEmpty(tag.Type))
             throw new ViolationException("VehicleMark were empty");
         if ((await _db.VehicleMarkRepository.GetAllAsync()).ToList().FirstOrDefault(x => x.Type == tag.Type) != null)
             throw new ViolationException("VehicleMark already exist");
-
+        
         await _db.VehicleMarkRepository.AddAsync(_mapper.Map<VehicleMark>(tag));
         await _db.SaveAsync();
-        return tag.Id;
     }
 
     public async Task<IEnumerable<VehicleMarkDTO>> GetAllVehicleMarks()
@@ -54,9 +53,9 @@ public class VehicleMarkService : IVehicleMarkService
 
     public async Task<VehicleMarkDTO> GetVehicleMarkByName(string name)
     {
-        var tag = await(await _db.VehicleMarkRepository.GetAllAsync()).FirstOrDefaultAsync(x => x.Type == name);
-        if (tag == null)
+        var mark = (await _db.VehicleMarkRepository.GetAllAsync()).ToList().FirstOrDefault(x => x.Type == name);
+        if (mark == null)
             throw new NotFoundException("Mark not found");
-        return _mapper.Map<VehicleMarkDTO>(tag);
+        return _mapper.Map<VehicleMarkDTO>(mark);
     }
 }

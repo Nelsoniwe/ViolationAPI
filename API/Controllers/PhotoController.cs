@@ -63,7 +63,7 @@ public class PhotoController : ControllerBase
     [Authorize(Roles = "User")]
     public async Task<ActionResult> CreatePhoto([FromBody] PhotoModel photo)
     {
-        var newPhotoId = await _photoService.AddPhoto(_mapper.Map<PhotoDTO>(photo));
+        await _photoService.AddPhoto(_mapper.Map<PhotoDTO>(photo));
         return Ok();
     }
 }

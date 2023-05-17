@@ -4,7 +4,7 @@ namespace BLL.Interfaces;
 
 public interface IApplicationStatusService
 {
-    Task<int> AddApplicationStatus(ApplicationStatusDTO tag);
+    Task AddApplicationStatus(ApplicationStatusDTO tag);
     Task<IEnumerable<ApplicationStatusDTO>> GetAllApplicationStatuses();
     Task<ApplicationStatusDTO> GetApplicationStatusById(int id);
     Task DeleteApplicationStatusById(int id);

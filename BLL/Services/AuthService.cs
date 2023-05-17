@@ -61,7 +61,7 @@ public class AuthService : IAuthService
             signingCredentials: new SigningCredentials(symmetricSecurityKey, SecurityAlgorithms.HmacSha256));
 
         var encodedJwt = new JwtSecurityTokenHandler().WriteToken(jwt);
-        return new UserLoginDataDTO(encodedJwt, userFromDb.Id);
+        return new UserLoginDataDTO(encodedJwt, userFromDb.Id, userRoles.ToList());
     }
     /// <summary>
     /// Register new user
@@ -69,10 +69,10 @@ public class AuthService : IAuthService
     /// <param name="user">User information</param>
     /// <param name="password">User password</param>
     /// <returns><see cref="UserProfileDTO"/> new user profile information</returns>
-    public async Task<UserProfileDTO> RegisterUser(UserDTO user, string password)
+    public async Task<UserProfileDTO> RegisterUser(UserDTO newUser, string password)
     {
-        await _service.CreateUserAndAddToRole(user, password, "User");
-        return _mapper.Map<UserProfileDTO>(await _service.GetByEmail(user.Email));
-
+        await _service.CreateUserAndAddToRole(newUser, password, "User");
+        var user = await _service.GetByEmail(newUser.Email);
+        return _mapper.Map<UserProfileDTO>(user.UserProfile);
     }
 }

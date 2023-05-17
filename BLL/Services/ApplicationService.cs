@@ -21,7 +21,7 @@ public class ApplicationService : IApplicationService
         _mapper = mapper;
     }
 
-    public async Task<int> AddApplication(ApplicationDTO application)
+    public async Task AddApplication(ApplicationDTO application)
     {
         if (string.IsNullOrEmpty(application.VehicleNumber))
             throw new ViolationException("VehicleNumber were empty");
@@ -32,7 +32,6 @@ public class ApplicationService : IApplicationService
 
         await _db.ApplicationRepository.AddAsync(_mapper.Map<Application>(application));
         await _db.SaveAsync();
-        return application.Id;
     }
 
     public async Task<IEnumerable<ApplicationDTO>> GetAllApplications()

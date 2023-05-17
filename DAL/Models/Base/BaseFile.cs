@@ -13,5 +13,5 @@ public class BaseFile : BaseEntity
     public string FilePath { get; set; }
 
     [Required]
-    public byte[] Hash { get; set; }
+    public string Hash { get; set; }
 }

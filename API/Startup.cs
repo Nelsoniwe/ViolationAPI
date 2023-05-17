@@ -36,7 +36,7 @@ public class Startup
 
         app.UseExceptionHandler("/error");
 
-        app.UseHttpsRedirection();
+        //app.UseHttpsRedirection();
         app.UseRouting();
 
         app.UseAuthentication();

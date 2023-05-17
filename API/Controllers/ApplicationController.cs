@@ -77,8 +77,8 @@ public class ApplicationController : ControllerBase
     [Authorize(Roles = "User")]
     public async Task<ActionResult> CreateApplication([FromBody] ApplicationModel application)
     {
-        var newApplicationId = await _applicationService.AddApplication(_mapper.Map<ApplicationDTO>(application));
-        return Ok(await _applicationService.GetApplicationById(newApplicationId));
+        await _applicationService.AddApplication(_mapper.Map<ApplicationDTO>(application));
+        return Ok();
     }
 
     /// <summary>
@@ -117,12 +117,11 @@ public class ApplicationController : ControllerBase
     [Authorize(Roles = "User")]
     public async Task<ActionResult> UpdateApplication([FromBody] ApplicationModel application)
     {
-        var applicationToUpdate = await _applicationService.GetApplicationById(application.Id);
         var roles = await _userService.UserGetRoles(Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier).Value));
 
         if (roles.Any(x => x == "Admin"))
         {
-            await _applicationService.DeleteApplicationById(application.Id);
+            await _applicationService.UpdateApplicationAsync(_mapper.Map<ApplicationDTO>(application));
             return Ok();
         }
 

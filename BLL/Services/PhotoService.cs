@@ -1,10 +1,12 @@
-﻿using AutoMapper;
+﻿using System.Security.Cryptography;
+using AutoMapper;
 using BLL.Exceptions;
 using BLL.Interfaces;
 using BLL.Models;
 using DAL.Interfaces.BaseInterfaces;
 using DAL.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Text;
 
 namespace BLL.Services;
 
@@ -19,18 +21,25 @@ public class PhotoService : IPhotoService
         _mapper = mapper;
     }
 
-    public async Task<int> AddPhoto(PhotoDTO photo)
+    public async Task AddPhoto(PhotoDTO photo)
     {
         if (string.IsNullOrEmpty(photo.FileName))
             throw new ViolationException("FileName were empty");
         if (string.IsNullOrEmpty(photo.FilePath))
             throw new ViolationException("FilePath were empty");
-        if (await(await _db.PhotoRepository.GetAllAsync()).FirstOrDefaultAsync(x => x.Hash == photo.Hash) != null)
+
+        using (SHA256 sha256 = SHA256.Create())
+        {
+            byte[] inputBytes = Encoding.UTF8.GetBytes(photo.FileName);
+            byte[] hashBytes = sha256.ComputeHash(inputBytes);
+            photo.Hash = BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
+        }
+
+        if ((await _db.PhotoRepository.GetAllAsync()).ToList().FirstOrDefault(x => x.Hash == photo.Hash) != null)
             throw new ViolationException("File already exist");
 
         await _db.PhotoRepository.AddAsync(_mapper.Map<Photo>(photo));
         await _db.SaveAsync();
-        return photo.Id;
     }
 
     public async Task<IEnumerable<PhotoDTO>> GetAllPhotos()

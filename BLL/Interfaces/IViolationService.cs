@@ -4,7 +4,7 @@ namespace BLL.Interfaces;
 
 public interface IViolationService
 {
-    Task<int> AddViolation(ViolationDTO tag);
+    Task AddViolation(ViolationDTO tag);
     Task<IEnumerable<ViolationDTO>> GetAllViolations();
     Task<ViolationDTO> GetViolationById(int id);
     Task DeletViolationById(int id);

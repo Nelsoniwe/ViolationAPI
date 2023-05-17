@@ -4,7 +4,7 @@ namespace BLL.Interfaces;
 
 public interface IApplicationService
 {
-    Task<int> AddApplication(ApplicationDTO tag);
+    Task AddApplication(ApplicationDTO tag);
     Task<IEnumerable<ApplicationDTO>> GetAllApplications();
     Task<ApplicationDTO> GetApplicationById(int id);
     Task DeleteApplicationById(int id);

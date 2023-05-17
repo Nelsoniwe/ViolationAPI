@@ -19,7 +19,7 @@ public class VehicleTypeService : IVehicleTypeService
         _db = uow;
         _mapper = mapper;
     }
-    public async Task<int> AddVehicleType(VehicleTypeDTO tag)
+    public async Task AddVehicleType(VehicleTypeDTO tag)
     {
         if (string.IsNullOrEmpty(tag.Type))
             throw new ViolationException("VehicleType were empty");
@@ -28,7 +28,6 @@ public class VehicleTypeService : IVehicleTypeService
 
         await _db.VehicleTypeRepository.AddAsync(_mapper.Map<VehicleType>(tag));
         await _db.SaveAsync();
-        return tag.Id;
     }
 
     public async Task<IEnumerable<VehicleTypeDTO>> GetAllVehicleTypes()

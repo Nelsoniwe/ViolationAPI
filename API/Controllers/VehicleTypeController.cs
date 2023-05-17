@@ -66,8 +66,8 @@ public class VehicleTypeController : ControllerBase
     [Authorize(Roles = "Admin")]
     public async Task<ActionResult> CreateType([FromBody] VehicleTypeModel color)
     {
-        var newTypeId = await _vehicleTypeService.AddVehicleType(_mapper.Map<VehicleTypeDTO>(color));
-        return Ok(await _vehicleTypeService.GetVehicleTypeById(newTypeId));
+        await _vehicleTypeService.AddVehicleType(_mapper.Map<VehicleTypeDTO>(color));
+        return Ok();
     }
 
     /// <summary>

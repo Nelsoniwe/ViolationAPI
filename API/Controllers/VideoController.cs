@@ -61,7 +61,7 @@ public class VideoController : ControllerBase
     [Authorize(Roles = "User")]
     public async Task<ActionResult> CreatePhoto([FromBody] VideoModel photo)
     {
-        var newPhotoId = await _videoService.AddVideo(_mapper.Map<VideoDTO>(photo));
+        await _videoService.AddVideo(_mapper.Map<VideoDTO>(photo));
         return Ok();
     }
 }

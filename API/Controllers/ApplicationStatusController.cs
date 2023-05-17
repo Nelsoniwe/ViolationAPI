@@ -65,8 +65,8 @@ public class ApplicationStatusController : ControllerBase
     [Authorize(Roles = "Admin")]
     public async Task<ActionResult> CreateApplicationStatus([FromBody] ApplicationStatusModel color)
     {
-        var newMarkId = await _applicationStatusService.AddApplicationStatus(_mapper.Map<ApplicationStatusDTO>(color));
-        return Ok(await _applicationStatusService.GetApplicationStatusById(newMarkId));
+        await _applicationStatusService.AddApplicationStatus(_mapper.Map<ApplicationStatusDTO>(color));
+        return Ok();
     }
 
     /// <summary>

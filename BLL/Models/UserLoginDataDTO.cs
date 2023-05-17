@@ -6,9 +6,12 @@ public class UserLoginDataDTO
 
     public string UserToken { get; }
 
-    public UserLoginDataDTO(string userToken, int userId)
+    public List<string> Roles { get; set; }
+
+    public UserLoginDataDTO(string userToken, int userId, List<string> roles)
     {
         UserToken = userToken;
         UserId = userId;
+        Roles = roles;
     }
 }

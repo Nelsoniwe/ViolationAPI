@@ -4,7 +4,7 @@ namespace BLL.Interfaces;
 
 public interface IVehicleColorService
 {
-    Task<int> AddVehicleColor(VehicleColorDTO tag);
+    Task AddVehicleColor(VehicleColorDTO tag);
     Task<IEnumerable<VehicleColorDTO>> GetAllVehicleColors();
     Task<VehicleColorDTO> GetVehicleColorById(int id);
     Task DeleteVehicleColorById(int id);

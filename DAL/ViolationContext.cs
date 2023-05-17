@@ -120,8 +120,8 @@ public class ViolationContext : IdentityDbContext<User, Role, int>
             new Violation { Id = 1, Type = "Parked in wrong place" },
             new Violation { Id = 2, Type = "Unfastened seat belt" });
 
-        builder.Entity<Photo>().HasData(new Photo { Id = 1, FileName = "dummy", FilePath = "dummy", Hash = new[] {Byte.MinValue} });
-        builder.Entity<Video>().HasData(new Video { Id = 1, FileName = "dummy", FilePath = "dummy", Hash = new[] { Byte.MinValue } });
+        builder.Entity<Photo>().HasData(new Photo { Id = 1, FileName = "dummy", FilePath = "dummy", Hash = "dummy" });
+        builder.Entity<Video>().HasData(new Video { Id = 1, FileName = "dummy", FilePath = "dummy", Hash = "dummy" });
 
         builder.Entity<Application>().HasData(
             new Application{
