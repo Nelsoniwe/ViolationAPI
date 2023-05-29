@@ -51,4 +51,6 @@ public class Application : BaseEntity
     [ForeignKey("Video")]
     public int? VideoId { get; set; }
     public virtual Video Video { get; set; }
+    public string AdminComment { get; set; }
+    public string UserComment { get; set; }
 }

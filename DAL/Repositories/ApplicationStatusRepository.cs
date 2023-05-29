@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DAL.Repositories;
 
-public class ApplicationStatusRepository : IApplicationStatusRepository
+public class ApplicationStatusRepository : IRepository<ApplicationStatus>
 {
     private readonly ViolationContext _db;
     public ApplicationStatusRepository(ViolationContext db)

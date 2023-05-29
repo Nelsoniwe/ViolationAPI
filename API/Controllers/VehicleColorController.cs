@@ -41,7 +41,7 @@ public class VehicleColorController : ControllerBase
     /// </summary>
     [HttpGet]
     [AllowAnonymous]
-    [Route("GetByName")]
+    [Route("ByName/{name}")]
     public async Task<ActionResult<IEnumerable<VehicleColorDTO>>> GetColorByName(string name)
     {
         return Ok(await _vehicleColorService.GetVehicleColorByName(name));
@@ -52,7 +52,7 @@ public class VehicleColorController : ControllerBase
     /// </summary>
     [HttpGet]
     [AllowAnonymous]
-    [Route("GetById")]
+    [Route("ById/{id}")]
     public async Task<ActionResult<IEnumerable<VehicleColorDTO>>> GetColorById(int id)
     {
         return Ok(await _vehicleColorService.GetVehicleColorById(id));
@@ -74,6 +74,7 @@ public class VehicleColorController : ControllerBase
     /// </summary>
     [HttpDelete]
     [Authorize(Roles = "Admin")]
+    [Route("Delete/{id}")]
     public async Task<ActionResult> DeleteColor(int id)
     {
         var color = await _vehicleColorService.GetVehicleColorById(id);

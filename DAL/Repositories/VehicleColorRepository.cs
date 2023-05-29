@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DAL.Repositories;
 
-public class VehicleColorRepository : IVehicleColorRepository
+public class VehicleColorRepository : IRepository<VehicleColor>
 {
     private readonly ViolationContext _db;
     public VehicleColorRepository(ViolationContext db)

@@ -2,6 +2,7 @@
 using AutoMapper;
 using BLL.Interfaces;
 using BLL.Models;
+using BLL.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -32,8 +33,8 @@ public class VideoController : ControllerBase
     /// </summary>
     [HttpGet]
     [AllowAnonymous]
-    [Route("GetById")]
-    public async Task<ActionResult<IEnumerable<VehicleColorDTO>>> GetPhotoById(int id)
+    [Route("ById/{id}")]
+    public async Task<ActionResult<IEnumerable<VideoModel>>> GetVideoById(int id)
     {
         return Ok(await _videoService.GetVideoById(id));
     }
@@ -43,13 +44,13 @@ public class VideoController : ControllerBase
     /// </summary>
     [HttpGet]
     [AllowAnonymous]
-    [Route("GetByApplicationId")]
-    public async Task<ActionResult<IEnumerable<VehicleColorDTO>>> GetPhotoByApplicationId(int id)
+    [Route("ByApplicationId/{id}")]
+    public async Task<ActionResult<IEnumerable<VideoModel>>> GetVideoByApplicationId(int id)
     {
         var application = await _applicationService.GetApplicationById(id);
         if (application.PhotoId == null)
         {
-            return BadRequest("Application doesn't contain photo");
+            return BadRequest("Application doesn't contain video");
         }
         return Ok(await _videoService.GetVideoById((int)application.PhotoId));
     }
@@ -59,9 +60,23 @@ public class VideoController : ControllerBase
     /// </summary>
     [HttpPost]
     [Authorize(Roles = "User")]
-    public async Task<ActionResult> CreatePhoto([FromBody] VideoModel photo)
+    public async Task<ActionResult<string>> CreateVideo([FromForm] IFormFile video)
     {
-        await _videoService.AddVideo(_mapper.Map<VideoDTO>(photo));
-        return Ok();
+        var videoDto = new VideoDTO();
+
+        if (video != null)
+        {
+            using (var memoryStream = new MemoryStream())
+            {
+                await video.CopyToAsync(memoryStream);
+                videoDto.data = memoryStream.ToArray();
+            }
+        }
+
+        videoDto.FileName = video.FileName;
+        await _videoService.AddVideo(videoDto);
+
+        var resultVideo = await _videoService.GetVideoByHash(videoDto.Hash);
+        return Ok(resultVideo.Id);
     }
 }

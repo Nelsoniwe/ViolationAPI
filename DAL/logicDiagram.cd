@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DAL.UnitOfWork" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gCCAgCAAAAAAAAIAAAAAAIAAAIAhAAAABAAIAAAAAAQ=</HashCode>
+      <FileName>UnitOfWork.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DAL.ViolationContext">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAACAARAAACAAAAAAAAAAEAQAAAAAAAAAAAACAAk=</HashCode>
+      <FileName>ViolationContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="DAL.Interfaces.BaseInterfaces.IUnitOfWork">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gCCAACAAAAAAAAIAAAAAAIAAAIAhAAAABAAIAAAAAAQ=</HashCode>
+      <FileName>Interfaces\BaseInterfaces\IUnitOfWork.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

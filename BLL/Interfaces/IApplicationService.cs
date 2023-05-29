@@ -12,5 +12,8 @@ public interface IApplicationService
 
     Task<IEnumerable<ApplicationDTO>> GetAllUserApplications(int userId);
     Task<IEnumerable<ApplicationDTO>> GetAllApplicationsByStatusId(int statusId);
+
+    Task<IEnumerable<ApplicationDTO>> GetApplicationsByFilter(ApplicationFilterDTO filter);
+
     Task<IEnumerable<ApplicationDTO>> GetAllVehicleApplications(string vehicleNumber);
 }

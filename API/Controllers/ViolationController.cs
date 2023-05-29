@@ -41,7 +41,7 @@ public class ViolationController : ControllerBase
     /// </summary>
     [HttpGet]
     [AllowAnonymous]
-    [Route("GetByName")]
+    [Route("ByName/{name}")]
     public async Task<ActionResult<IEnumerable<ViolationDTO>>> GetViolationByName(string name)
     {
         return Ok(await _violationService.GetViolationByName(name));
@@ -52,7 +52,7 @@ public class ViolationController : ControllerBase
     /// </summary>
     [HttpGet]
     [AllowAnonymous]
-    [Route("GetById")]
+    [Route("ById/{id}")]
     public async Task<ActionResult<IEnumerable<ViolationDTO>>> GetViolationById(int id)
     {
         return Ok(await _violationService.GetViolationById(id));
@@ -74,6 +74,7 @@ public class ViolationController : ControllerBase
     /// </summary>
     [HttpDelete]
     [Authorize(Roles = "Admin")]
+    [Route("Delete/{id}")]
     public async Task<ActionResult> DeleteViolation(int id)
     {
         var violation = await _violationService.GetViolationById(id);

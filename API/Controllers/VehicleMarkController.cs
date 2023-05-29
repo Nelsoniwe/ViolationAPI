@@ -42,7 +42,7 @@ public class VehicleMarkController : ControllerBase
     /// </summary>
     [HttpGet]
     [AllowAnonymous]
-    [Route("GetByName")]
+    [Route("ByName/{name}")]
     public async Task<ActionResult<IEnumerable<VehicleMarkDTO>>> GetMarkByName(string name)
     {
         return Ok(await _vehicleMarkService.GetVehicleMarkByName(name));
@@ -53,7 +53,7 @@ public class VehicleMarkController : ControllerBase
     /// </summary>
     [HttpGet]
     [AllowAnonymous]
-    [Route("GetById")]
+    [Route("ById/{id}")]
     public async Task<ActionResult<IEnumerable<VehicleMarkDTO>>> GetMarkById(int id)
     {
         return Ok(await _vehicleMarkService.GetVehicleMarkById(id));
@@ -75,6 +75,7 @@ public class VehicleMarkController : ControllerBase
     /// </summary>
     [HttpDelete]
     [Authorize(Roles = "Admin")]
+    [Route("Delete/{id}")]
     public async Task<ActionResult> DeleteMark(int id)
     {
         var mark = await _vehicleMarkService.GetVehicleMarkById(id);

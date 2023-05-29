@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DAL.Repositories;
 
-public class ViolationRepository : IViolationRepository
+public class ViolationRepository : IRepository<Violation>
 {
     private readonly ViolationContext _db;
     public ViolationRepository(ViolationContext db)

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DAL.Repositories;
 
-public class VehicleMarkRepository : IVehicleMarkRepository
+public class VehicleMarkRepository : IRepository<VehicleMark>
 {
     private readonly ViolationContext _db;
     public VehicleMarkRepository(ViolationContext db)

@@ -38,11 +38,22 @@ public class ApplicationController : ControllerBase
     }
 
     /// <summary>
+    /// Get all applications
+    /// </summary>
+    [HttpGet]
+    [AllowAnonymous]
+    [Route("ByFilter")]
+    public async Task<ActionResult<IEnumerable<ApplicationDTO>>> GetApplicationByFilter([FromQuery] ApplicationFilter filter)
+    {
+        return Ok(await _applicationService.GetApplicationsByFilter(_mapper.Map<ApplicationFilterDTO>(filter)));
+    }
+
+    /// <summary>
     /// Get all applications by status id
     /// </summary>
     [HttpGet]
     [AllowAnonymous]
-    [Route("GetByStatusId")]
+    [Route("ByStatusId/{id}")]
     public async Task<ActionResult<IEnumerable<ApplicationDTO>>> GetAllApplicationsByStatusId(int id)
     {
         return Ok(await _applicationService.GetAllApplicationsByStatusId(id));
@@ -53,7 +64,7 @@ public class ApplicationController : ControllerBase
     /// </summary>
     [HttpGet]
     [AllowAnonymous]
-    [Route("GetByUserId")]
+    [Route("ByUserId/{id}")]
     public async Task<ActionResult<IEnumerable<ApplicationDTO>>> GetAllApplicationsByUserId(int id)
     {
         return Ok(await _applicationService.GetAllUserApplications(id));
@@ -64,7 +75,7 @@ public class ApplicationController : ControllerBase
     /// </summary>
     [HttpGet]
     [AllowAnonymous]
-    [Route("GetByVehicleNumber")]
+    [Route("ByVehicleNumber/{number}")]
     public async Task<ActionResult<IEnumerable<ApplicationDTO>>> GetAllApplicationsByVehicleNumber(string number)
     {
         return Ok(await _applicationService.GetAllVehicleApplications(number));
@@ -86,6 +97,7 @@ public class ApplicationController : ControllerBase
     /// </summary>
     [HttpDelete]
     [Authorize(Roles = "User")]
+    [Route("Delete/{id}")]
     public async Task<ActionResult> DeleteApplication(int id)
     {
         var applicationToDelete = await _applicationService.GetApplicationById(id);

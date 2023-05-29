@@ -4,6 +4,7 @@ using AutoMapper;
 using BLL.Interfaces;
 using BLL.Models;
 using BLL.Services;
+using BLL.Utility;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -34,8 +35,8 @@ public class PhotoController : ControllerBase
     /// </summary>
     [HttpGet]
     [AllowAnonymous]
-    [Route("GetById")]
-    public async Task<ActionResult<IEnumerable<VehicleColorDTO>>> GetPhotoById(int id)
+    [Route("ById/{id}")]
+    public async Task<ActionResult<IEnumerable<PhotoModel>>> GetPhotoById(int id)
     {
         return Ok(await _photoService.GetPhotoById(id));
     }
@@ -45,8 +46,8 @@ public class PhotoController : ControllerBase
     /// </summary>
     [HttpGet]
     [AllowAnonymous]
-    [Route("GetByApplicationId")]
-    public async Task<ActionResult<IEnumerable<VehicleColorDTO>>> GetPhotoByApplicationId(int id)
+    [Route("ByApplicationId/{id}")]
+    public async Task<ActionResult<IEnumerable<PhotoModel>>> GetPhotoByApplicationId(int id)
     {
         var application = await _applicationService.GetApplicationById(id);
         if (application.PhotoId == null)
@@ -61,9 +62,23 @@ public class PhotoController : ControllerBase
     /// </summary>
     [HttpPost]
     [Authorize(Roles = "User")]
-    public async Task<ActionResult> CreatePhoto([FromBody] PhotoModel photo)
+    public async Task<ActionResult<PhotoDTO>> CreatePhoto([FromForm] IFormFile photo)
     {
-        await _photoService.AddPhoto(_mapper.Map<PhotoDTO>(photo));
-        return Ok();
+        var photoDto = new PhotoDTO();
+
+        if (photo != null)
+        {
+            using (var memoryStream = new MemoryStream())
+            {
+                await photo.CopyToAsync(memoryStream);
+                photoDto.data = memoryStream.ToArray();
+            }
+        }
+
+        photoDto.FileName = photo.FileName;
+        await _photoService.AddPhoto(photoDto);
+
+        var resultPhoto = await _photoService.GetPhotoByHash(photoDto.Hash);
+        return Ok(resultPhoto.Id);
     }
 }

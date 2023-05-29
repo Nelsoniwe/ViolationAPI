@@ -5,6 +5,7 @@ using BLL.Models;
 using DAL.Interfaces.BaseInterfaces;
 using DAL.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using static System.Net.Mime.MediaTypeNames;
 using Application = DAL.Models.Application;
 
@@ -85,6 +86,17 @@ public class ApplicationService : IApplicationService
     public async Task<IEnumerable<ApplicationDTO>> GetAllApplicationsByStatusId(int statusId)
     {
         return _mapper.Map<IEnumerable<ApplicationDTO>>((await _db.ApplicationRepository.GetAllAsync()).Where(x=>x.StatusId == statusId));
+    }
+    public async Task<IEnumerable<ApplicationDTO>> GetApplicationsByFilter(ApplicationFilterDTO filter)
+    {
+        return _mapper.Map<IEnumerable<ApplicationDTO>>(await _db.ApplicationRepository.GetByFilter(filter.VehicleMarkId,
+            filter.ViolationId,
+            filter.VehicleTypeId,
+            filter. VehicleColorId,
+            filter.VehicleNumber,
+            filter.StatusId,
+            filter.PublicationTime,
+            filter.ViolationTime));
     }
 
     public async Task<IEnumerable<ApplicationDTO>> GetAllVehicleApplications(string vehicleNumber)

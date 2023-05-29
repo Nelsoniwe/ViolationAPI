@@ -30,7 +30,7 @@ public class UserController : ControllerBase
     /// Get all user profiles
     /// </summary>
     [HttpGet]
-    [Route("GetAll")]
+    [Route("All")]
     [Authorize(Roles = "Admin")]
     public async Task<ActionResult<IEnumerable<UserProfileDTO>>> GetAllProfiles()
     {
@@ -56,7 +56,7 @@ public class UserController : ControllerBase
     /// </summary>
     /// <param name="id">Id of user who should be found</param>
     [HttpGet]
-    [Route("GetProfile/{id}")]
+    [Route("Profile/{id}")]
     [AllowAnonymous]
     public async Task<ActionResult<UserProfileDTO>> GetFullUserProfileById(int id)
     {
@@ -69,7 +69,7 @@ public class UserController : ControllerBase
     /// </summary>
     /// <param name="username">username of user who should be found</param>
     [HttpGet]
-    [Route("GetByUserName")]
+    [Route("ByUserName")]
     [AllowAnonymous]
     public async Task<ActionResult<UserProfileDTO>> GetByUserName(string username)
     {
@@ -80,7 +80,7 @@ public class UserController : ControllerBase
     /// Get roles of authorized user
     /// </summary>
     [HttpGet]
-    [Route("GetRoles")]
+    [Route("Roles")]
     [Authorize(Roles = "User")]
     public async Task<ActionResult<IEnumerable<string>>> GetRoles()
     {
@@ -92,7 +92,7 @@ public class UserController : ControllerBase
     /// </summary>
     /// <param name="id">User id whose roles should be found</param>
     [HttpGet]
-    [Route("GetRoles/{id}")]
+    [Route("Roles/{id}")]
     [Authorize(Roles = "User")]
     public async Task<ActionResult<IEnumerable<string>>> GetRoles(int id)
     {
@@ -103,11 +103,11 @@ public class UserController : ControllerBase
     /// Get profile of authorized user
     /// </summary>
     [HttpGet]
-    [Route("GetProfile")]
+    [Route("Profile")]
     [Authorize(Roles = "User")]
-    public async Task<ActionResult<UserProfileDTO>> GetProfile()
+    public async Task<ActionResult<UserDTO>> GetProfile()
     {
-        var userProfile = await _userProfileService.GetUserProfileByIdWithDetails(Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier).Value));
+        var userProfile = await _userService.GetByIdWithDetails(Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier).Value));
         return Ok(userProfile);
     }
 

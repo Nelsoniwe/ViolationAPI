@@ -41,7 +41,7 @@ public class ApplicationStatusController : ControllerBase
     /// </summary>
     [HttpGet]
     [AllowAnonymous]
-    [Route("GetByName")]
+    [Route("ByName/{name}")]
     public async Task<ActionResult<IEnumerable<ApplicationStatusDTO>>> GetApplicationStatusByName(string name)
     {
         return Ok(await _applicationStatusService.GetApplicationStatusByName(name));
@@ -52,7 +52,7 @@ public class ApplicationStatusController : ControllerBase
     /// </summary>
     [HttpGet]
     [AllowAnonymous]
-    [Route("GetById")]
+    [Route("ById/{id}")]
     public async Task<ActionResult<IEnumerable<ApplicationStatusDTO>>> GetApplicationStatusById(int id)
     {
         return Ok(await _applicationStatusService.GetApplicationStatusById(id));
@@ -74,6 +74,7 @@ public class ApplicationStatusController : ControllerBase
     /// </summary>
     [HttpDelete]
     [Authorize(Roles = "Admin")]
+    [Route("Delete/{id}")]
     public async Task<ActionResult> DeleteApplicationStatus(int id)
     {
         var applicationStatus = await _applicationStatusService.GetApplicationStatusById(id);

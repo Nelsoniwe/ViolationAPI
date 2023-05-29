@@ -21,7 +21,39 @@ public class ApplicationRepository : IApplicationRepository
     {
         var applications = await _db.Applications.ToListAsync();
         return applications.AsQueryable();
-    } 
+    }
+
+    public async Task<IQueryable<Application>> GetByFilter(
+     int vehicleMarkId,
+     int violationId,
+     int vehicleTypeId,
+     int vehicleColorId,
+     string vehicleNumber,
+     int statusId,
+     DateTime? publicationTime,
+     DateTime? violationTime)
+    {
+        IQueryable<Application> applications = null;
+
+        if (vehicleMarkId != 0)
+            applications = _db.Applications.Where(x=>x.VehicleMarkId == vehicleMarkId);
+        if (violationId != 0)
+            applications = applications == null ? _db.Applications.Where(x => x.ViolationId == violationId) : applications.Where(x => x.ViolationId == violationId);
+        if (vehicleTypeId != 0)
+            applications = applications == null ? _db.Applications.Where(x => x.VehicleTypeId == vehicleTypeId) : applications.Where(x => x.VehicleTypeId == vehicleTypeId);
+        if (vehicleColorId != 0)
+            applications = applications == null ? _db.Applications.Where(x => x.VehicleColorId == vehicleColorId) : applications.Where(x => x.VehicleColorId == vehicleColorId);
+        if (!String.IsNullOrEmpty(vehicleNumber))
+            applications = applications == null ? _db.Applications.Where(x => x.VehicleNumber == vehicleNumber) : applications.Where(x => x.VehicleNumber == vehicleNumber);
+        if (statusId != 0)
+            applications = applications == null ? _db.Applications.Where(x => x.StatusId == statusId) : applications.Where(x => x.StatusId == statusId);
+        if (publicationTime != default(DateTime))
+            applications = applications == null ? _db.Applications.Where(x => x.PublicationTime == publicationTime) : applications.Where(x => x.PublicationTime == publicationTime);
+        if (violationTime != default(DateTime))
+            applications = applications == null ? _db.Applications.Where(x => x.ViolationTime == violationTime) : applications.Where(x => x.ViolationTime == violationTime);
+
+        return applications;
+    }
 
     public async Task<Application> GetByIdAsync(int id)
     {

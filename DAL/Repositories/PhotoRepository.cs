@@ -5,9 +5,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DAL.Repositories;
 
-public class PhotoRepository : IPhotoRepository
+public class PhotoRepository : IRepository<Photo>
 {
     private readonly ViolationContext _db;
+
     public PhotoRepository(ViolationContext db)
     {
         _db = db;

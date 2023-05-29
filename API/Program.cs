@@ -4,12 +4,12 @@ using DAL;
 var builder = WebApplication.CreateBuilder(args);
 
 
-using (var context = new ViolationContext())
-{
-    //context.Database.EnsureDeleted();
-    context.Database.EnsureCreated();
-    context.SaveChanges();
-}
+//using (var context = new ViolationContext())
+//{
+//    //context.Database.EnsureDeleted();
+//    context.Database.EnsureCreated();
+//    context.SaveChanges();
+//}
 
 CreateHostBuilder(args).Build().Run();
 

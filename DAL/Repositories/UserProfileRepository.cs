@@ -42,7 +42,7 @@ namespace DAL.Repositories
 
         public async Task<UserProfile> GetByIdWithDetailsAsync(int id)
         {
-            return await _db.UserProfiles.FindAsync(id);
+            return await _db.UserProfiles.Include(x=>x.AppUser).Include(x=>x.Applications).FirstOrDefaultAsync(x=>x.Id == id);
         }
     }
 }

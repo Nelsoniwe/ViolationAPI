@@ -15,6 +15,8 @@ public class AutoMapperPL : Profile
             .ReverseMap();
         CreateMap<ApplicationModel, ApplicationDTO>()
             .ReverseMap();
+        CreateMap<ApplicationFilter, ApplicationFilterDTO>()
+            .ReverseMap();
         CreateMap<ApplicationStatusModel, ApplicationStatusDTO>()
             .ReverseMap();
         CreateMap<PhotoModel, PhotoDTO>()

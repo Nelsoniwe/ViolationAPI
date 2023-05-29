@@ -1,10 +1,17 @@
 ﻿using DAL.Interfaces.BaseInterfaces;
-using System.Reflection.Metadata;
 using DAL.Models;
 
 namespace DAL.Interfaces;
 
-/// <summary>
-/// Repository interface to work with Applications
-/// </summary>
-public interface IApplicationRepository : IRepository<Application> { }
+public interface IApplicationRepository : IRepository<Application>
+{
+    public Task<IQueryable<Application>> GetByFilter(
+        int vehicleMarkId,
+        int violationId,
+        int vehicleTypeId,
+        int vehicleColorId,
+        string vehicleNumber,
+        int statusId,
+        DateTime? publicationTime,
+        DateTime? violationTime);
+}

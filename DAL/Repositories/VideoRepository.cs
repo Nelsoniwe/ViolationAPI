@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DAL.Repositories;
 
-public class VideoRepository : IVideoRepository
+public class VideoRepository : IRepository<Video>
 {
     private readonly ViolationContext _db;
     public VideoRepository(ViolationContext db)

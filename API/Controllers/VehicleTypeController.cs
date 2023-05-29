@@ -41,8 +41,8 @@ public class VehicleTypeController : ControllerBase
     /// Get type by name
     /// </summary>
     [HttpGet]
+    [Route("ByName/{name}")]
     [AllowAnonymous]
-    [Route("GetByName")]
     public async Task<ActionResult<IEnumerable<VehicleTypeDTO>>> GetTypeByName(string name)
     {
         return Ok(await _vehicleTypeService.GetVehicleTypeByName(name));
@@ -52,8 +52,8 @@ public class VehicleTypeController : ControllerBase
     /// Get type by id
     /// </summary>
     [HttpGet]
+    [Route("ById/{id}")]
     [AllowAnonymous]
-    [Route("GetById")]
     public async Task<ActionResult<IEnumerable<VehicleTypeDTO>>> GetTypeById(int id)
     {
         return Ok(await _vehicleTypeService.GetVehicleTypeById(id));
@@ -74,6 +74,7 @@ public class VehicleTypeController : ControllerBase
     /// Delete type
     /// </summary>
     [HttpDelete]
+    [Route("Delete/{id}")]
     [Authorize(Roles = "Admin")]
     public async Task<ActionResult> DeleteType(int id)
     {
