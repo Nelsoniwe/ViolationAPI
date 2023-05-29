@@ -10,4 +10,5 @@ public class ApplicationFilterDTO
     public int StatusId { get; set; }
     public DateTime PublicationTime { get; set; }
     public DateTime ViolationTime { get; set; }
+    public string UserEmail { get; set; }
 }

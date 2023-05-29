@@ -5,7 +5,7 @@ namespace API.Models;
 public class ChangePasswordModel
 {
     [Required]
-    [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+    [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 1)]
     [DataType(DataType.Password)]
     [Display(Name = "Password")]
     public string CurrentPassword { get; set; }

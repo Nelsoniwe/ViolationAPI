@@ -13,5 +13,6 @@ public interface IApplicationRepository : IRepository<Application>
         string vehicleNumber,
         int statusId,
         DateTime? publicationTime,
-        DateTime? violationTime);
+        DateTime? violationTime,
+        int userId);
 }

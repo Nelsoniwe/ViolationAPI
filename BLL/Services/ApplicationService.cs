@@ -89,6 +89,10 @@ public class ApplicationService : IApplicationService
     }
     public async Task<IEnumerable<ApplicationDTO>> GetApplicationsByFilter(ApplicationFilterDTO filter)
     {
+        var userId = 0;
+        if (!string.IsNullOrEmpty(filter.UserEmail))
+            userId = (await _db.UserRepository.GetByEmailAsync(filter.UserEmail))?.Id ?? 0;
+
         return _mapper.Map<IEnumerable<ApplicationDTO>>(await _db.ApplicationRepository.GetByFilter(filter.VehicleMarkId,
             filter.ViolationId,
             filter.VehicleTypeId,
@@ -96,7 +100,8 @@ public class ApplicationService : IApplicationService
             filter.VehicleNumber,
             filter.StatusId,
             filter.PublicationTime,
-            filter.ViolationTime));
+            filter.ViolationTime,
+            userId));
     }
 
     public async Task<IEnumerable<ApplicationDTO>> GetAllVehicleApplications(string vehicleNumber)

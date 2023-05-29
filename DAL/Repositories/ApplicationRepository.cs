@@ -31,7 +31,8 @@ public class ApplicationRepository : IApplicationRepository
      string vehicleNumber,
      int statusId,
      DateTime? publicationTime,
-     DateTime? violationTime)
+     DateTime? violationTime,
+     int userId)
     {
         IQueryable<Application> applications = null;
 
@@ -51,6 +52,8 @@ public class ApplicationRepository : IApplicationRepository
             applications = applications == null ? _db.Applications.Where(x => x.PublicationTime == publicationTime) : applications.Where(x => x.PublicationTime == publicationTime);
         if (violationTime != default(DateTime))
             applications = applications == null ? _db.Applications.Where(x => x.ViolationTime == violationTime) : applications.Where(x => x.ViolationTime == violationTime);
+        if (userId != 0)
+            applications = applications == null ? _db.Applications.Where(x => x.UserId == userId) : applications.Where(x => x.UserId == userId);
 
         return applications;
     }
