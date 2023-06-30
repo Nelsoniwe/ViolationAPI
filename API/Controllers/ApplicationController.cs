@@ -111,7 +111,7 @@ public class ApplicationController : ControllerBase
 
         var userApplications = await _applicationService.GetAllUserApplications(Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier).Value));
 
-        if (userApplications.Select(x=>x.Id).Contains(id))
+        if (!userApplications.Select(x=>x.Id).Contains(id))
         {
             return BadRequest("It is not your application");
         }
@@ -137,9 +137,7 @@ public class ApplicationController : ControllerBase
             return Ok();
         }
 
-        var userApplications = await _applicationService.GetAllUserApplications(Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier).Value));
-
-        if (userApplications.Select(x => x.Id).Contains(application.Id))
+        if (application.UserId != Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier).Value))
         {
             return BadRequest("It is not your application");
         }

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DAL.Migrations
 {
     /// <inheritdoc />
-    public partial class changes : Migration
+    public partial class first : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -88,7 +88,7 @@ namespace DAL.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Type = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
+                    Type = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -101,7 +101,7 @@ namespace DAL.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Type = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
+                    Type = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -114,7 +114,7 @@ namespace DAL.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Type = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
+                    Type = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -142,7 +142,7 @@ namespace DAL.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Type = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
+                    Type = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -353,9 +353,9 @@ namespace DAL.Migrations
                 columns: new[] { "Id", "Status" },
                 values: new object[,]
                 {
-                    { 1, "Waiting" },
-                    { 2, "Rejected" },
-                    { 3, "Approved" }
+                    { 1, "Очікується" },
+                    { 2, "Скасовано" },
+                    { 3, "Підтверджено" }
                 });
 
             migrationBuilder.InsertData(
@@ -372,8 +372,8 @@ namespace DAL.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { 1, 0, "5c473415-b5d9-4fb6-bfd1-401aac78d747", "admin@gmail.com", false, false, null, "ADMIN@GMAIL.COM", "ADMIN", "AQAAAAIAAYagAAAAEAwBS0A+JxV4AYJTiDCkYYfc6u3iGF04eKW1NCXz5b+dwGBBqTKNDjBXG5AnVLrYeA==", null, false, null, false, "Admin" },
-                    { 2, 0, "a5dbfa09-f320-4f53-bc0e-36027189e3cb", "user@gmail.com", false, false, null, "USER@GMAIL.COM", "USER", "AQAAAAIAAYagAAAAEAjRXfeN8btouwc18DBmSiAu46k16URrBbMF4jhTCg2FTg2q7Ui2OwJH1Z/UjhT87A==", null, false, null, false, "User" }
+                    { 1, 0, "a443f59d-5255-493c-86f8-7adccc0e416f", "admin@gmail.com", false, false, null, "ADMIN@GMAIL.COM", "ADMIN", "AQAAAAIAAYagAAAAEO/6z5XvonJjDRhfGgGqoWP8BfHunmUKlAQmuG3Wqswhw9nQY0UELGaWbY5oBxV41w==", null, false, null, false, "Admin" },
+                    { 2, 0, "59aabb23-8a9b-4a61-8474-f3669c9f81e1", "user@gmail.com", false, false, null, "USER@GMAIL.COM", "USER", "AQAAAAIAAYagAAAAEJzQxovnL+CcXXrWXLITJV0Ar3xE2Ak83ZSoJBV9tC820qW8uLdVJM3bHx4XppK8lw==", null, false, null, false, "User" }
                 });
 
             migrationBuilder.InsertData(
@@ -386,26 +386,26 @@ namespace DAL.Migrations
                 columns: new[] { "Id", "Type" },
                 values: new object[,]
                 {
-                    { 1, "Blue" },
-                    { 2, "White" },
-                    { 3, "Red" },
-                    { 4, "Black" },
-                    { 5, "Silver" },
-                    { 6, "Gray" },
-                    { 7, "Green" },
-                    { 8, "Yellow" },
-                    { 9, "Orange" },
-                    { 10, "Brown" },
-                    { 11, "Purple" },
-                    { 12, "Pink" },
-                    { 13, "Gold" },
-                    { 14, "Beige" },
-                    { 15, "Teal" },
-                    { 16, "Navy" },
-                    { 17, "Magenta" },
-                    { 18, "Turquoise" },
-                    { 19, "Lime" },
-                    { 20, "Cyan" }
+                    { 1, "Синій" },
+                    { 2, "Білий" },
+                    { 3, "Червоний" },
+                    { 4, "Чорний" },
+                    { 5, "Сріблястий" },
+                    { 6, "Сірий" },
+                    { 7, "Зелений" },
+                    { 8, "Жовтий" },
+                    { 9, "Помаранчевий" },
+                    { 10, "Коричневий" },
+                    { 11, "Фіолетовий" },
+                    { 12, "Рожевий" },
+                    { 13, "Золотий" },
+                    { 14, "Бежевий" },
+                    { 15, "Бірюзовий" },
+                    { 16, "Темно-синій" },
+                    { 17, "Маджента" },
+                    { 18, "Бірюзовий" },
+                    { 19, "Лайм" },
+                    { 20, "Синьо-зелений" }
                 });
 
             migrationBuilder.InsertData(
@@ -470,8 +470,10 @@ namespace DAL.Migrations
                 columns: new[] { "Id", "Type" },
                 values: new object[,]
                 {
-                    { 1, "Automobile" },
-                    { 2, "Motorcycle" }
+                    { 1, "Легковий автомобіль" },
+                    { 2, "Мотоцикл" },
+                    { 3, "Квадроцикл" },
+                    { 4, "Вантажівка" }
                 });
 
             migrationBuilder.InsertData(
@@ -484,36 +486,36 @@ namespace DAL.Migrations
                 columns: new[] { "Id", "Type" },
                 values: new object[,]
                 {
-                    { 1, "Parked in wrong place" },
-                    { 2, "Unfastened seat belt" },
-                    { 3, "Speeding" },
-                    { 4, "Running a red light" },
-                    { 5, "Driving under the influence" },
-                    { 6, "Using a mobile phone while driving" },
-                    { 7, "Driving without a valid license" },
-                    { 8, "Failure to yield right of way" },
-                    { 9, "Illegal parking" },
-                    { 10, "Reckless driving" },
-                    { 11, "Tailgating" },
-                    { 12, "Failure to use turn signals" },
-                    { 13, "Improper passing" },
-                    { 14, "Driving with expired registration" },
-                    { 15, "Driving without insurance" },
-                    { 16, "Failure to stop for a pedestrian" },
-                    { 17, "Illegal U-turn" },
-                    { 18, "Driving on the wrong side of the road" },
-                    { 19, "Driving with tinted windows" },
-                    { 20, "Failure to use headlights" },
-                    { 21, "Driving with a suspended license" },
-                    { 22, "Failure to obey traffic signs" },
-                    { 23, "Driving without proper lights" },
-                    { 24, "Illegal lane change" },
-                    { 25, "Driving with a cracked windshield" },
-                    { 26, "Driving with excessive noise" },
-                    { 27, "Failure to use a child safety seat" },
-                    { 28, "Failure to yield to emergency vehicles" },
-                    { 29, "Driving the wrong way on a one-way street" },
-                    { 30, "Failure to dim headlights" }
+                    { 1, "Паркування у неправильному місці" },
+                    { 2, "Не застібнутий ремінь безпеки" },
+                    { 3, "Перевищення швидкості" },
+                    { 4, "Проїзд на червоне світло" },
+                    { 5, "Керування у стані сп'яніння" },
+                    { 6, "Використання мобільного телефону під час руху" },
+                    { 7, "Керування без дійсного посвідчення водія" },
+                    { 8, "Недотримання пріоритету" },
+                    { 9, "Неправильне паркування" },
+                    { 10, "Хуліганський стиль водіння" },
+                    { 11, "Різке торможення перед попереднім автомобілем" },
+                    { 12, "Недотримання правил включення поворотних сигналів" },
+                    { 13, "Неправильний обгін" },
+                    { 14, "Рух зі знятою реєстрацією" },
+                    { 15, "Рух без страховки" },
+                    { 16, "Невпорядковане зупиняння для пішохода" },
+                    { 17, "Заборонений поворот на 180 градусів" },
+                    { 18, "Рух у зустрічному напрямку" },
+                    { 19, "Рух з тонованими вікнами" },
+                    { 20, "Недотримання включення фар" },
+                    { 21, "Рух зі зупиненою дійсною посвідченням водія" },
+                    { 22, "Невиконання знаків дорожнього руху" },
+                    { 23, "Рух без належного освітлення" },
+                    { 24, "Неправомірна зміна смуги руху" },
+                    { 25, "Рух з тріснутим лобовим склом" },
+                    { 26, "Рух з надмірним шумом" },
+                    { 27, "Недотримання використання дитячого автокрісла" },
+                    { 28, "Невиконання вимог про уступ дороги аварійним службам" },
+                    { 29, "Рух у забороненому напрямку на вулиці з одностороннім рухом" },
+                    { 30, "Недотримання вимог про вимкнення світла фар" }
                 });
 
             migrationBuilder.InsertData(
@@ -538,7 +540,7 @@ namespace DAL.Migrations
             migrationBuilder.InsertData(
                 table: "Applications",
                 columns: new[] { "Id", "AdminComment", "Geolocation", "PhotoId", "PublicationTime", "StatusId", "UserComment", "UserId", "VehicleColorId", "VehicleMarkId", "VehicleNumber", "VehicleTypeId", "VideoId", "ViolationId", "ViolationTime" },
-                values: new object[] { 1, "", "dummy", 1, new DateTime(2023, 5, 28, 0, 0, 0, 0, DateTimeKind.Local), 1, "", 1, 1, 1, "dummy", 1, 1, 1, new DateTime(2023, 5, 28, 0, 0, 0, 0, DateTimeKind.Local) });
+                values: new object[] { 1, "", "dummy", 1, new DateTime(2023, 5, 30, 0, 0, 0, 0, DateTimeKind.Local), 1, "", 1, 1, 1, "dummy", 1, 1, 1, new DateTime(2023, 5, 30, 0, 0, 0, 0, DateTimeKind.Local) });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Applications_PhotoId",

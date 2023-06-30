@@ -107,7 +107,7 @@ namespace DAL.Migrations
                             AdminComment = "",
                             Geolocation = "dummy",
                             PhotoId = 1,
-                            PublicationTime = new DateTime(2023, 5, 28, 0, 0, 0, 0, DateTimeKind.Local),
+                            PublicationTime = new DateTime(2023, 5, 30, 0, 0, 0, 0, DateTimeKind.Local),
                             StatusId = 1,
                             UserComment = "",
                             UserId = 1,
@@ -117,7 +117,7 @@ namespace DAL.Migrations
                             VehicleTypeId = 1,
                             VideoId = 1,
                             ViolationId = 1,
-                            ViolationTime = new DateTime(2023, 5, 28, 0, 0, 0, 0, DateTimeKind.Local)
+                            ViolationTime = new DateTime(2023, 5, 30, 0, 0, 0, 0, DateTimeKind.Local)
                         });
                 });
 
@@ -142,17 +142,17 @@ namespace DAL.Migrations
                         new
                         {
                             Id = 1,
-                            Status = "Waiting"
+                            Status = "Очікується"
                         },
                         new
                         {
                             Id = 2,
-                            Status = "Rejected"
+                            Status = "Скасовано"
                         },
                         new
                         {
                             Id = 3,
-                            Status = "Approved"
+                            Status = "Підтверджено"
                         });
                 });
 
@@ -308,13 +308,13 @@ namespace DAL.Migrations
                         {
                             Id = 1,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5c473415-b5d9-4fb6-bfd1-401aac78d747",
+                            ConcurrencyStamp = "a443f59d-5255-493c-86f8-7adccc0e416f",
                             Email = "admin@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEAwBS0A+JxV4AYJTiDCkYYfc6u3iGF04eKW1NCXz5b+dwGBBqTKNDjBXG5AnVLrYeA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEO/6z5XvonJjDRhfGgGqoWP8BfHunmUKlAQmuG3Wqswhw9nQY0UELGaWbY5oBxV41w==",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
                             UserName = "Admin"
@@ -323,13 +323,13 @@ namespace DAL.Migrations
                         {
                             Id = 2,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a5dbfa09-f320-4f53-bc0e-36027189e3cb",
+                            ConcurrencyStamp = "59aabb23-8a9b-4a61-8474-f3669c9f81e1",
                             Email = "user@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "USER@GMAIL.COM",
                             NormalizedUserName = "USER",
-                            PasswordHash = "AQAAAAIAAYagAAAAEAjRXfeN8btouwc18DBmSiAu46k16URrBbMF4jhTCg2FTg2q7Ui2OwJH1Z/UjhT87A==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJzQxovnL+CcXXrWXLITJV0Ar3xE2Ak83ZSoJBV9tC820qW8uLdVJM3bHx4XppK8lw==",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
                             UserName = "User"
@@ -380,8 +380,8 @@ namespace DAL.Migrations
 
                     b.Property<string>("Type")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
 
@@ -391,102 +391,102 @@ namespace DAL.Migrations
                         new
                         {
                             Id = 1,
-                            Type = "Blue"
+                            Type = "Синій"
                         },
                         new
                         {
                             Id = 2,
-                            Type = "White"
+                            Type = "Білий"
                         },
                         new
                         {
                             Id = 3,
-                            Type = "Red"
+                            Type = "Червоний"
                         },
                         new
                         {
                             Id = 4,
-                            Type = "Black"
+                            Type = "Чорний"
                         },
                         new
                         {
                             Id = 5,
-                            Type = "Silver"
+                            Type = "Сріблястий"
                         },
                         new
                         {
                             Id = 6,
-                            Type = "Gray"
+                            Type = "Сірий"
                         },
                         new
                         {
                             Id = 7,
-                            Type = "Green"
+                            Type = "Зелений"
                         },
                         new
                         {
                             Id = 8,
-                            Type = "Yellow"
+                            Type = "Жовтий"
                         },
                         new
                         {
                             Id = 9,
-                            Type = "Orange"
+                            Type = "Помаранчевий"
                         },
                         new
                         {
                             Id = 10,
-                            Type = "Brown"
+                            Type = "Коричневий"
                         },
                         new
                         {
                             Id = 11,
-                            Type = "Purple"
+                            Type = "Фіолетовий"
                         },
                         new
                         {
                             Id = 12,
-                            Type = "Pink"
+                            Type = "Рожевий"
                         },
                         new
                         {
                             Id = 13,
-                            Type = "Gold"
+                            Type = "Золотий"
                         },
                         new
                         {
                             Id = 14,
-                            Type = "Beige"
+                            Type = "Бежевий"
                         },
                         new
                         {
                             Id = 15,
-                            Type = "Teal"
+                            Type = "Бірюзовий"
                         },
                         new
                         {
                             Id = 16,
-                            Type = "Navy"
+                            Type = "Темно-синій"
                         },
                         new
                         {
                             Id = 17,
-                            Type = "Magenta"
+                            Type = "Маджента"
                         },
                         new
                         {
                             Id = 18,
-                            Type = "Turquoise"
+                            Type = "Бірюзовий"
                         },
                         new
                         {
                             Id = 19,
-                            Type = "Lime"
+                            Type = "Лайм"
                         },
                         new
                         {
                             Id = 20,
-                            Type = "Cyan"
+                            Type = "Синьо-зелений"
                         });
                 });
 
@@ -500,8 +500,8 @@ namespace DAL.Migrations
 
                     b.Property<string>("Type")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
 
@@ -770,8 +770,8 @@ namespace DAL.Migrations
 
                     b.Property<string>("Type")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
 
@@ -781,12 +781,22 @@ namespace DAL.Migrations
                         new
                         {
                             Id = 1,
-                            Type = "Automobile"
+                            Type = "Легковий автомобіль"
                         },
                         new
                         {
                             Id = 2,
-                            Type = "Motorcycle"
+                            Type = "Мотоцикл"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Type = "Квадроцикл"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Type = "Вантажівка"
                         });
                 });
 
@@ -836,8 +846,8 @@ namespace DAL.Migrations
 
                     b.Property<string>("Type")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
 
@@ -847,152 +857,152 @@ namespace DAL.Migrations
                         new
                         {
                             Id = 1,
-                            Type = "Parked in wrong place"
+                            Type = "Паркування у неправильному місці"
                         },
                         new
                         {
                             Id = 2,
-                            Type = "Unfastened seat belt"
+                            Type = "Не застібнутий ремінь безпеки"
                         },
                         new
                         {
                             Id = 3,
-                            Type = "Speeding"
+                            Type = "Перевищення швидкості"
                         },
                         new
                         {
                             Id = 4,
-                            Type = "Running a red light"
+                            Type = "Проїзд на червоне світло"
                         },
                         new
                         {
                             Id = 5,
-                            Type = "Driving under the influence"
+                            Type = "Керування у стані сп'яніння"
                         },
                         new
                         {
                             Id = 6,
-                            Type = "Using a mobile phone while driving"
+                            Type = "Використання мобільного телефону під час руху"
                         },
                         new
                         {
                             Id = 7,
-                            Type = "Driving without a valid license"
+                            Type = "Керування без дійсного посвідчення водія"
                         },
                         new
                         {
                             Id = 8,
-                            Type = "Failure to yield right of way"
+                            Type = "Недотримання пріоритету"
                         },
                         new
                         {
                             Id = 9,
-                            Type = "Illegal parking"
+                            Type = "Неправильне паркування"
                         },
                         new
                         {
                             Id = 10,
-                            Type = "Reckless driving"
+                            Type = "Хуліганський стиль водіння"
                         },
                         new
                         {
                             Id = 11,
-                            Type = "Tailgating"
+                            Type = "Різке торможення перед попереднім автомобілем"
                         },
                         new
                         {
                             Id = 12,
-                            Type = "Failure to use turn signals"
+                            Type = "Недотримання правил включення поворотних сигналів"
                         },
                         new
                         {
                             Id = 13,
-                            Type = "Improper passing"
+                            Type = "Неправильний обгін"
                         },
                         new
                         {
                             Id = 14,
-                            Type = "Driving with expired registration"
+                            Type = "Рух зі знятою реєстрацією"
                         },
                         new
                         {
                             Id = 15,
-                            Type = "Driving without insurance"
+                            Type = "Рух без страховки"
                         },
                         new
                         {
                             Id = 16,
-                            Type = "Failure to stop for a pedestrian"
+                            Type = "Невпорядковане зупиняння для пішохода"
                         },
                         new
                         {
                             Id = 17,
-                            Type = "Illegal U-turn"
+                            Type = "Заборонений поворот на 180 градусів"
                         },
                         new
                         {
                             Id = 18,
-                            Type = "Driving on the wrong side of the road"
+                            Type = "Рух у зустрічному напрямку"
                         },
                         new
                         {
                             Id = 19,
-                            Type = "Driving with tinted windows"
+                            Type = "Рух з тонованими вікнами"
                         },
                         new
                         {
                             Id = 20,
-                            Type = "Failure to use headlights"
+                            Type = "Недотримання включення фар"
                         },
                         new
                         {
                             Id = 21,
-                            Type = "Driving with a suspended license"
+                            Type = "Рух зі зупиненою дійсною посвідченням водія"
                         },
                         new
                         {
                             Id = 22,
-                            Type = "Failure to obey traffic signs"
+                            Type = "Невиконання знаків дорожнього руху"
                         },
                         new
                         {
                             Id = 23,
-                            Type = "Driving without proper lights"
+                            Type = "Рух без належного освітлення"
                         },
                         new
                         {
                             Id = 24,
-                            Type = "Illegal lane change"
+                            Type = "Неправомірна зміна смуги руху"
                         },
                         new
                         {
                             Id = 25,
-                            Type = "Driving with a cracked windshield"
+                            Type = "Рух з тріснутим лобовим склом"
                         },
                         new
                         {
                             Id = 26,
-                            Type = "Driving with excessive noise"
+                            Type = "Рух з надмірним шумом"
                         },
                         new
                         {
                             Id = 27,
-                            Type = "Failure to use a child safety seat"
+                            Type = "Недотримання використання дитячого автокрісла"
                         },
                         new
                         {
                             Id = 28,
-                            Type = "Failure to yield to emergency vehicles"
+                            Type = "Невиконання вимог про уступ дороги аварійним службам"
                         },
                         new
                         {
                             Id = 29,
-                            Type = "Driving the wrong way on a one-way street"
+                            Type = "Рух у забороненому напрямку на вулиці з одностороннім рухом"
                         },
                         new
                         {
                             Id = 30,
-                            Type = "Failure to dim headlights"
+                            Type = "Недотримання вимог про вимкнення світла фар"
                         });
                 });
 

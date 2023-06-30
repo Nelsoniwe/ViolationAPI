@@ -93,32 +93,32 @@ public class ViolationContext : IdentityDbContext<User, Role, int>
 
         //builder.Entity<Application>().HasData(new Application);
         builder.Entity<ApplicationStatus>().HasData(
-            new ApplicationStatus { Id = 1, Status = "Waiting" },
-            new ApplicationStatus { Id = 2, Status = "Rejected" },
-            new ApplicationStatus { Id = 3, Status = "Approved" });
+            new ApplicationStatus { Id = 1, Status = "Очікується" },
+            new ApplicationStatus { Id = 2, Status = "Скасовано" },
+            new ApplicationStatus { Id = 3, Status = "Підтверджено" });
 
         //builder.Entity<Photo>().HasData(userProfile);
         builder.Entity<VehicleColor>().HasData(
-            new VehicleColor { Id = 1, Type = "Blue" },
-            new VehicleColor { Id = 2, Type = "White" },
-            new VehicleColor { Id = 3, Type = "Red" },
-            new VehicleColor { Id = 4, Type = "Black" },
-            new VehicleColor { Id = 5, Type = "Silver" },
-            new VehicleColor { Id = 6, Type = "Gray" },
-            new VehicleColor { Id = 7, Type = "Green" },
-            new VehicleColor { Id = 8, Type = "Yellow" },
-            new VehicleColor { Id = 9, Type = "Orange" },
-            new VehicleColor { Id = 10, Type = "Brown" },
-            new VehicleColor { Id = 11, Type = "Purple" },
-            new VehicleColor { Id = 12, Type = "Pink" },
-            new VehicleColor { Id = 13, Type = "Gold" },
-            new VehicleColor { Id = 14, Type = "Beige" },
-            new VehicleColor { Id = 15, Type = "Teal" },
-            new VehicleColor { Id = 16, Type = "Navy" },
-            new VehicleColor { Id = 17, Type = "Magenta" },
-            new VehicleColor { Id = 18, Type = "Turquoise" },
-            new VehicleColor { Id = 19, Type = "Lime" },
-            new VehicleColor { Id = 20, Type = "Cyan" });
+            new VehicleColor { Id = 1, Type = "Синій" },
+            new VehicleColor { Id = 2, Type = "Білий" },
+            new VehicleColor { Id = 3, Type = "Червоний" },
+            new VehicleColor { Id = 4, Type = "Чорний" },
+            new VehicleColor { Id = 5, Type = "Сріблястий" },
+            new VehicleColor { Id = 6, Type = "Сірий" },
+            new VehicleColor { Id = 7, Type = "Зелений" },
+            new VehicleColor { Id = 8, Type = "Жовтий" },
+            new VehicleColor { Id = 9, Type = "Помаранчевий" },
+            new VehicleColor { Id = 10, Type = "Коричневий" },
+            new VehicleColor { Id = 11, Type = "Фіолетовий" },
+            new VehicleColor { Id = 12, Type = "Рожевий" },
+            new VehicleColor { Id = 13, Type = "Золотий" },
+            new VehicleColor { Id = 14, Type = "Бежевий" },
+            new VehicleColor { Id = 15, Type = "Бірюзовий" },
+            new VehicleColor { Id = 16, Type = "Темно-синій" },
+            new VehicleColor { Id = 17, Type = "Маджента" },
+            new VehicleColor { Id = 18, Type = "Бірюзовий" },
+            new VehicleColor { Id = 19, Type = "Лайм" },
+            new VehicleColor { Id = 20, Type = "Синьо-зелений" });
 
         builder.Entity<VehicleMark>().HasData(
             new VehicleMark { Id = 1, Type = "Mazda" },
@@ -173,41 +173,44 @@ public class ViolationContext : IdentityDbContext<User, Role, int>
             new VehicleMark { Id = 50, Type = "Buick" });
 
         builder.Entity<VehicleType>().HasData(
-            new VehicleType { Id = 1, Type = "Automobile" },
-            new VehicleType { Id = 2, Type = "Motorcycle" });
+            new VehicleType { Id = 1, Type = "Легковий автомобіль" },
+            new VehicleType { Id = 2, Type = "Мотоцикл" },
+            new VehicleType { Id = 3, Type = "Квадроцикл" },
+            new VehicleType { Id = 4, Type = "Вантажівка" });
 
         //builder.Entity<Video>().HasData(userProfile);
         builder.Entity<Violation>().HasData(
-            new Violation { Id = 1, Type = "Parked in wrong place" },
-            new Violation { Id = 2, Type = "Unfastened seat belt" },
-            new Violation { Id = 3, Type = "Speeding" },
-            new Violation { Id = 4, Type = "Running a red light" },
-            new Violation { Id = 5, Type = "Driving under the influence" },
-            new Violation { Id = 6, Type = "Using a mobile phone while driving" },
-            new Violation { Id = 7, Type = "Driving without a valid license" },
-            new Violation { Id = 8, Type = "Failure to yield right of way" },
-            new Violation { Id = 9, Type = "Illegal parking" },
-            new Violation { Id = 10, Type = "Reckless driving" },
-            new Violation { Id = 11, Type = "Tailgating" },
-            new Violation { Id = 12, Type = "Failure to use turn signals" },
-            new Violation { Id = 13, Type = "Improper passing" },
-            new Violation { Id = 14, Type = "Driving with expired registration" },
-            new Violation { Id = 15, Type = "Driving without insurance" },
-            new Violation { Id = 16, Type = "Failure to stop for a pedestrian" },
-            new Violation { Id = 17, Type = "Illegal U-turn" },
-            new Violation { Id = 18, Type = "Driving on the wrong side of the road" },
-            new Violation { Id = 19, Type = "Driving with tinted windows" },
-            new Violation { Id = 20, Type = "Failure to use headlights" },
-            new Violation { Id = 21, Type = "Driving with a suspended license" },
-            new Violation { Id = 22, Type = "Failure to obey traffic signs" },
-            new Violation { Id = 23, Type = "Driving without proper lights" },
-            new Violation { Id = 24, Type = "Illegal lane change" },
-            new Violation { Id = 25, Type = "Driving with a cracked windshield" },
-            new Violation { Id = 26, Type = "Driving with excessive noise" },
-            new Violation { Id = 27, Type = "Failure to use a child safety seat" },
-            new Violation { Id = 28, Type = "Failure to yield to emergency vehicles" },
-            new Violation { Id = 29, Type = "Driving the wrong way on a one-way street" },
-            new Violation { Id = 30, Type = "Failure to dim headlights" });
+            new Violation { Id = 1, Type = "Паркування у неправильному місці" },
+            new Violation { Id = 2, Type = "Не застібнутий ремінь безпеки" },
+            new Violation { Id = 3, Type = "Перевищення швидкості" },
+            new Violation { Id = 4, Type = "Проїзд на червоне світло" },
+            new Violation { Id = 5, Type = "Керування у стані сп'яніння" },
+            new Violation { Id = 6, Type = "Використання мобільного телефону під час руху" },
+            new Violation { Id = 7, Type = "Керування без дійсного посвідчення водія" },
+            new Violation { Id = 8, Type = "Недотримання пріоритету" },
+            new Violation { Id = 9, Type = "Неправильне паркування" },
+            new Violation { Id = 10, Type = "Хуліганський стиль водіння" },
+            new Violation { Id = 11, Type = "Різке торможення перед попереднім автомобілем" },
+            new Violation { Id = 12, Type = "Недотримання правил включення поворотних сигналів" },
+            new Violation { Id = 13, Type = "Неправильний обгін" },
+            new Violation { Id = 14, Type = "Рух зі знятою реєстрацією" },
+            new Violation { Id = 15, Type = "Рух без страховки" },
+            new Violation { Id = 16, Type = "Невпорядковане зупиняння для пішохода" },
+            new Violation { Id = 17, Type = "Заборонений поворот на 180 градусів" },
+            new Violation { Id = 18, Type = "Рух у зустрічному напрямку" },
+            new Violation { Id = 19, Type = "Рух з тонованими вікнами" },
+            new Violation { Id = 20, Type = "Недотримання включення фар" },
+            new Violation { Id = 21, Type = "Рух зі зупиненою дійсною посвідченням водія" },
+            new Violation { Id = 22, Type = "Невиконання знаків дорожнього руху" },
+            new Violation { Id = 23, Type = "Рух без належного освітлення" },
+            new Violation { Id = 24, Type = "Неправомірна зміна смуги руху" },
+            new Violation { Id = 25, Type = "Рух з тріснутим лобовим склом" },
+            new Violation { Id = 26, Type = "Рух з надмірним шумом" },
+            new Violation { Id = 27, Type = "Недотримання використання дитячого автокрісла" },
+            new Violation { Id = 28, Type = "Невиконання вимог про уступ дороги аварійним службам" },
+            new Violation { Id = 29, Type = "Рух у забороненому напрямку на вулиці з одностороннім рухом" },
+            new Violation { Id = 30, Type = "Недотримання вимог про вимкнення світла фар" });
+
 
         builder.Entity<Photo>().HasData(new Photo { Id = 1, FileName = "dummy", FilePath = "dummy", Hash = "dummy" });
         builder.Entity<Video>().HasData(new Video { Id = 1, FileName = "dummy", FilePath = "dummy", Hash = "dummy" });

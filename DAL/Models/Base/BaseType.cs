@@ -5,7 +5,7 @@ namespace DAL.Models.Base;
 public class BaseType : BaseEntity
 {
     [Required]
-    [MaxLength(50)]
+    [MaxLength(100)]
     public string Type { get; set; }
     public ICollection<Application> Applications { get; set; }
 
